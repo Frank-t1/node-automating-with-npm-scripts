@@ -1,0 +1,164 @@
+1
+
+
+Setup
+
+    1
+
+What We'll Build
+2
+Get the Code
+
+For this project, you'll download code and complete tasks on your local computer. We offer two options for how you download (and upload) your code: GitHub or a ZIP file.
+
+Read GitHub 101 Guide when you have problems.
+
+Please follow the steps below to get the code from GitHub.
+
+    2.1
+
+Setup Git
+2.2
+GitHub Authentication
+2.3
+Fork the Repository
+2.4
+
+    Clone the Repository
+
+3
+Local Environment Setup
+
+Need help getting your local development environment setup? Here are some videos that will walk you through the setup process for this Project.
+Operating System:
+Windows
+4
+
+    Verify Local Environment
+    Installation
+
+    Run the following command from the root folder of the forked project to install all dependencies.
+
+    npm install
+
+    Verify Setup
+
+    In order to verify that everything is setup correctly, run the following command that should show you the failing tests.
+
+    npm run test
+
+    This is good! You'll fix these tests once you start with the tasks in the coming modules. Every time you want to check your work locally you can type that command and it will report the status of every task in the project.
+
+Projects logo
+Automating Node.js with NPM Scripts
+
+    1. What We'll Build
+    2. Get the Code
+    3. Local Environment Setup
+    4. Verify Local Environment
+
+
+
+2
+In order to verify your work for this module, open your command-line application to the directory of your project and run npm run test:module2.
+
+    1
+
+Create script that will transpile the code using Babel
+
+Open package.json and go to the scripts section. Add a script named build with the value babel src -d build to transpile the source code using Babel.
+
+Open package.json and go to the scripts section. Add a script named build with the value babel src -d build to transpile the source code using Babel.
+
+Note:
+
+    all we will be doing will be based on this file so keep it open and make changes to the object mapped to the scripts key.
+    Ensure too for all tasks you remember to copy package.json to package.test.json (see above for why)
+
+2
+Add a script to clean up the build directory
+
+There will be situations you'll need to cleanup the build directory. For that reason, add a script named build-clean to the scripts object and put rm -rf build as the value for that key.
+Add a script to clean up the build directory
+
+There will be situations you'll need to cleanup the build directory. For that reason, add a script named build-clean to the scripts object and put rm -rf build as the value for that key.
+3
+Add post hook for the build-clean script
+
+Add post hook for the build-clean script by adding a new key named postbuild-clean with a value of npm run build.
+
+3
+
+Creating scripts to Find And Fix Lint Errors
+
+For all tasks, in order to allow for online testing, please make changes as mentioned in package.json, and then copy the modified file over to package.test.json. Online tests will examine package.test.json.
+
+In order to verify your work for this module, open your command-line application to the directory of your project and run npm run test:module3.
+
+    1
+
+Add script to analyse the source code and report lint errors
+
+Open package.json and go to the scripts section. Add a new key named lint with the value npx standard \"src/*.js\".
+2
+Create script to automatically fix and format code that's not following the style guide
+
+    Add another key named lint-fix with value npx standard \"src/*.js\" --fix as the value.
+
+Projects logo
+Automating Node.js with NPM Scripts
+
+    1. Add script to analyse the source code and report lint errors
+    Add script to analyse the source code and report lint errors
+
+Open package.json and go to the scripts section. Add a new key named lint with the value npx standard \"src/*.js\".
+
+    2. Create script to automatically fix and format code that's not following the style guide
+    Add another key named lint-fix with value npx standard \"src/*.js\" --fix as the value.
+
+4
+
+
+Creating scripts To Run The Application
+
+For all tasks, in order to allow for online testing, please make changes as mentioned in package.json, and then copy the modified file over to package.test.json. Online tests will examine package.test.json.
+
+In order to verify your work for this module, open your command-line application to the directory of your project and run npm run test:module4.
+
+    1
+
+Add a start script to build and run the application
+
+Open package.json and go to the scripts section. Add a new key named start and set the value to npm run build && node build/index.js.
+2
+Add script to run the application in development mode
+
+Add a key named start-dev to the scripts object and give it the value nodemon --watch src --exec PORT=5000 npm start.
+
+This script uses nodemon to watch for file changes and each time the code changes, it'll execute the npm start script.
+3
+Add pre hook for the start-dev script
+
+    We want to run the linter and fix errors before running the start-dev script and we will use pre hook for the script to achieve this.
+
+    Add a new key named prestart-dev with a value of npm run lint-fix to the scripts object.
+
+Projects logo
+Automating Node.js with NPM Scripts
+
+            1. Add a start script to build and run the application
+            Add a start script to build and run the application
+
+Open package.json and go to the scripts section. Add a new key named start and set the value to npm run build && node build/index.js.
+
+            2. Add script to run the application in development mode
+Add a key named start-dev to the scripts object and give it the value nodemon --watch src --exec PORT=5000 npm start.
+
+This script uses nodemon to watch for file changes and each time the code changes, it'll execute the npm start script.
+
+            3. Add pre hook for the start-dev script
+
+            We want to run the linter and fix errors before running the start-dev script and we will use pre hook for the script to achieve this.
+
+Add a new key named prestart-dev with a value of npm run lint-fix to the scripts object.
+
